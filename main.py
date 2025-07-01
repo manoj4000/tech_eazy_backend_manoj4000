@@ -6,7 +6,15 @@ from fastapi.responses import JSONResponse
 import socket
 import sqlalchemy
 from sqlalchemy.exc import OperationalError
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specify your frontend domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app = FastAPI(title="Zero Mile Delivery API")
 
 # ✅ Auto-create tables only if they don't exist — runs at startup
