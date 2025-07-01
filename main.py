@@ -8,6 +8,11 @@ import sqlalchemy
 from sqlalchemy.exc import OperationalError
 from fastapi.middleware.cors import CORSMiddleware
 
+
+app = FastAPI(title="Zero Mile Delivery API")
+
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # or specify your frontend domain
@@ -15,8 +20,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app = FastAPI(title="Zero Mile Delivery API")
-
 # ✅ Auto-create tables only if they don't exist — runs at startup
 @app.on_event("startup")
 def startup():
