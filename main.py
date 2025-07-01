@@ -3,6 +3,9 @@ from routers import vendors, parcels, routes, assign, status, drivers
 from database import Base, engine
 import models  # Make sure this imports all your models so Base knows them
 from fastapi.responses import JSONResponse
+import socket
+import sqlalchemy
+from sqlalchemy.exc import OperationalError
 
 app = FastAPI(title="Zero Mile Delivery API")
 
