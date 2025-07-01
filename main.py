@@ -15,7 +15,28 @@ def startup():
 
 @app.get("/api/check")
 def health_check():
-    return JSONResponse(content={"status": "✅ API is running"}, status_code=200)
+
+    # Check DB connection
+    db_status = "unknown"
+    try:
+        with engine.connect() as conn:
+            conn.execute(sqlalchemy.text("SELECT 1"))
+        db_status = "connected"
+    except OperationalError:
+        db_status = "disconnected"
+
+    # Hostname
+    hostname = socket.gethostname()
+
+    # App status
+    return JSONResponse(
+        content={
+            "status": "✅ API is running",
+            "db_status": db_status,
+            "hostname": hostname,
+        },
+        status_code=200
+    )
 
 @app.get("/")
 def root():
