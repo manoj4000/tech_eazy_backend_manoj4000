@@ -1,0 +1,298 @@
+{
+    "info": {
+        "name": "Zero Mile Delivery API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "version": "0.1.0",
+        "_postman_id": "zero-mile-delivery-api"
+    },
+    "item": [
+        {
+            "name": "Vendors",
+            "item": [
+                {
+                    "name": "List Vendors",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/vendors/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "vendors", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Vendor",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Vendor Name\",\n  \"contact_number\": \"1234567890\",\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\",\n  \"address\": \"Vendor Address\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/vendors/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "vendors", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Vendor Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"vendor@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/vendors/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "vendors", "login"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Drivers",
+            "item": [
+                {
+                    "name": "List Driver Vehicles",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/drivers/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "drivers", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Driver Vehicle",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Driver Name\",\n  \"contact_number\": \"1234567890\",\n  \"email\": \"driver@example.com\",\n  \"password\": \"password123\",\n  \"available\": true,\n  \"vehicle_type\": \"Bike\",\n  \"vehicle_capacity\": 10\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/drivers/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "drivers", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Driver Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"driver@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/drivers/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "drivers", "login"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Parcels",
+            "item": [
+                {
+                    "name": "List Parcels",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/parcels/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "parcels", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Parcel",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"vendor_id\": 1,\n  \"customer_name\": \"Customer Name\",\n  \"address\": \"Customer Address\",\n  \"contact_number\": \"1234567890\",\n  \"size\": \"Medium\",\n  \"weight\": 2.5,\n  \"area\": \"Area Name\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/parcels/",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "parcels", ""]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parcels By Vendor",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/parcels/vendor/:vendor_id",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "parcels", "vendor", ":vendor_id"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parcels By Driver",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/parcels/driver/:driver_id",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "parcels", "driver", ":driver_id"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Routes",
+            "item": [
+                {
+                    "name": "Dummy Plan",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/routes/plan",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "routes", "plan"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Assignments",
+            "item": [
+                {
+                    "name": "Assign Parcels To Driver",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[1, 2, 3]"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/assign/?driver_id=1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "assign", ""],
+                            "query": [
+                                {
+                                    "key": "driver_id",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parcels By Driver (Assignment)",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/assign/:driver_id",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "assign", ":driver_id"]
+                        }
+                    }
+                },
+                {
+                    "name": "Auto Assign Parcels",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/assign/auto-assign",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "assign", "auto-assign"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Delivery Status",
+            "item": [
+                {
+                    "name": "Update Delivery Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"delivery_status\": \"Delivered\",\n  \"delivery_date\": \"2024-06-01\",\n  \"delivery_time\": \"14:00\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/status/:id",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "status", ":id"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Delivery Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/status/:id",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "status", ":id"]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8000"
+        }
+    ]
+}
